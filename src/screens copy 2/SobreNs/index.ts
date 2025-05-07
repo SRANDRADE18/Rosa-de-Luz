@@ -1,0 +1,1 @@
+export { SobreNs } from "./SobreNs";
