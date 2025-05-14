@@ -2,6 +2,9 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { Template } from "./screens/Template";
 import { SobreNs } from "./screens copy 2/SobreNs";
+import { Produtos } from "./screens produtos/Produtos";
+import { Frame }  from "./screens compra/Frame/Frame.tsx";
+ 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 createRoot(document.getElementById("app") as HTMLElement).render(
@@ -10,6 +13,8 @@ createRoot(document.getElementById("app") as HTMLElement).render(
       <Routes>
         <Route path="/" element={<Template />} />
         <Route path="/sobre" element={<SobreNs />} />
+        <Route path="/produtos" element={<Produtos/>}/>
+        <Route path="/compra" element={<Frame/>}/>
       </Routes>
     </BrowserRouter>
   </StrictMode>,

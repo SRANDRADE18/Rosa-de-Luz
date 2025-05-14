@@ -66,7 +66,7 @@ export const Template = (): JSX.Element => {
           <img
             className="w-[70px] h-[70px] object-cover"
             alt="Rosa de Luz Logo"
-            src="/image-8.png"
+            src="/image-303.png"
           />
 
           <div className="flex items-center space-x-6">
@@ -74,7 +74,8 @@ export const Template = (): JSX.Element => {
               Home
             </div>
             <div className="font-['Montserrat',Helvetica] font-medium text-black text-[13px] tracking-[1.69px]">
-              Comprar
+              
+              <a href="/produtos"> Compra</a>
             </div>
             <div className="font-['Montserrat',Helvetica] font-medium text-black text-[13px] tracking-[1.69px]">
               <a href="/sobre"> Sobre </a> 
