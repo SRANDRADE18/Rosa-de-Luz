@@ -27,9 +27,10 @@ const products = [
 // Navigation items
 const navItems = [
   { name: "Home", href: "/", active: true },
-  { name: "Comprar", href: "#", active: false },
-  { name: "Sobre", href: "#", active: false },
-  { name: "Contato", href: "#", active: false },
+  { name: "Comprar", href: "compra", active: false },
+  { name: "Sobre", href: "sobre", active: false },
+  { name: "Contato", href: "contato", active: false },
+  { name: "Produtos", href: "/produtos", active: false },
 ];
 const navItems2 = [
   { name: "Whatsapp", href: "https://api.whatsapp.com/send/?phone=5511992560217&text&type=phone_number&app_absent=0", active: false },

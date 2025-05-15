@@ -24,9 +24,10 @@ export const Produtos = (): JSX.Element => {
 
   const navItems = [
     { name: "Home", href: "/", active: true },
-    { name: "Comprar", href: "#", active: false },
-    { name: "Sobre", href: "#", active: false },
-    { name: "Contato", href: "#", active: false },
+    { name: "Comprar", href: "compra", active: false },
+    { name: "Sobre", href: "sobre", active: false },
+    { name: "Contato", href: "contato", active: false },
+    { name: "Produtos", href: "/produtos", active: false },
   ];
 
   // Product data
