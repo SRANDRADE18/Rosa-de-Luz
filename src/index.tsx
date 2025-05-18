@@ -1,9 +1,9 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { Template } from "./screens/Template";
-import { SobreNs } from "./screens copy 2/SobreNs";
-import { Produtos } from "./screens produtos/Produtos";
-import { Frame }  from "./screens compra/Frame/Frame.tsx";
+import { SobreNs } from "./screensSN/SobreNs/index.ts";
+import { Produtos } from "./screensPR/Produtos/index.ts";
+import { Frame }  from "./screenCP/Frame/Frame.tsx";
  
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 

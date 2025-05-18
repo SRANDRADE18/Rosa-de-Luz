@@ -2,6 +2,9 @@ import { Button } from "../../components/ui/button";
 import { Card, CardContent } from "../../components/ui/card";
 import { Separator } from "../../components/ui/separator";
 
+import { SearchIcon, ShoppingBagIcon, MenuIcon, XIcon } from "lucide-react";
+import { useState } from 'react';
+
 // Product data for mapping
 const products = [
   {
@@ -48,6 +51,11 @@ const footerSections = {
 
 
 export const SobreNs = (): JSX.Element => {
+  
+    const [isOpen, setIsOpen] = useState(false);
+  
+      const toggleMenu = () => setIsOpen(!isOpen);
+  
   return (
     <div
       className="bg-neutral-100 flex flex-row justify-center w-full"
@@ -55,40 +63,45 @@ export const SobreNs = (): JSX.Element => {
     >
       <div className="bg-neutral-100 overflow-hidden w-full max-w-[1440px] relative">
         {/* Navigation */}
-        <nav className="flex items-center justify-between px-10 py-2.5">
-          <img
-            className="w-[70px] h-[70px] object-cover"
-            alt="Logo"
-            src="/image-303.png"
-          />
+     <header className="flex items-center justify-between px-7 h-[84px] bg-white shadow-md relative">
+            {/* Logo */}
+            <a href="/" className="w-[70px] h-[70px]">
+                <img
+                    className="w-full h-full object-contain"
+                    alt="Rosa de Luz Logo"
+                    src="/image-303.png"
+                />
+            </a>
 
-          <div className="flex items-center space-x-6">
-            {navItems.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className={`font-medium text-[13px] tracking-[1.69px] ${
-                  item.active ? "text-[#c30000]" : "text-black"
-                }`}
-              >
-                {item.name}
-              </a>
-            ))}
+            {/* Desktop Menu */}
+            <nav className="hidden lg:flex items-center space-x-8">
+                <a href="/" className="font-medium text-[#c30000] text-[13px] tracking-[1.69px] hover:text-black">Home</a>
+                <a href="/produtos" className="font-medium text-black text-[13px] tracking-[1.69px] hover:text-[#c30000]">Compra</a>
+                <a href="/sobre" className="font-medium text-black text-[13px] tracking-[1.69px] hover:text-[#c30000]">Sobre</a>
+                <a href="/contato" className="font-medium text-black text-[13px] tracking-[1.69px] hover:text-[#c30000]">Contato</a>
+            </nav>
 
-            <div className="flex items-center ml-6 space-x-6">
-              <img
-                className="w-5 h-5 object-cover"
-                alt="Pesquisar"
-                src="/icons8-pesquisar-50-2.png"
-              />
-              <img
-                className="w-5 h-5 object-cover"
-                alt="Sacola de compras"
-                src="/icons8-sacola-de-compras-50-2.png"
-              />
+            {/* Icons */}
+            <div className="flex items-center space-x-4">
+                <SearchIcon className="w-5 h-5 cursor-pointer" />
+                <ShoppingBagIcon className="w-5 h-5 cursor-pointer" />
             </div>
-          </div>
-        </nav>
+
+            {/* Mobile Menu Button */}
+            <button onClick={toggleMenu} className="lg:hidden text-black">
+                {isOpen ? <XIcon className="w-7 h-7" /> : <MenuIcon className="w-7 h-7" />}
+            </button>
+
+            {/* Mobile Menu */}
+            {isOpen && (
+                <nav className="absolute top-[84px] left-0 w-full bg-white shadow-lg p-6 flex flex-col space-y-6 z-20">
+                    <a href="/" className="font-medium text-[#c30000] text-lg tracking-[1.69px] hover:text-black">Home</a>
+                    <a href="/produtos" className="font-medium text-black text-lg tracking-[1.69px] hover:text-[#c30000]">Compra</a>
+                    <a href="/sobre" className="font-medium text-black text-lg tracking-[1.69px] hover:text-[#c30000]">Sobre</a>
+                    <a href="/contato" className="font-medium text-black text-lg tracking-[1.69px] hover:text-[#c30000]">Contato</a>
+                </nav>
+            )}
+        </header>
 
         {/* Hero Section */}
         <section className="relative w-full h-[961px]">

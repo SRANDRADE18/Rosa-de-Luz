@@ -1,12 +1,17 @@
-import { StarIcon } from "lucide-react";
 import { Button } from "../../components/ui/button";
 import { Card, CardContent } from "../../components compra/ui/card";
-import { SearchIcon, ShoppingBagIcon } from "lucide-react";
+import { SearchIcon, ShoppingBagIcon, MenuIcon, XIcon  } from "lucide-react";
 import { Separator } from "../../components/ui/separator";
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 export const Frame = (): JSX.Element => {
+  const [isOpen, setIsOpen] = useState(false);
+  
+      const toggleMenu = () => setIsOpen(!isOpen);
+
+
+
   const productDat = [
     {
       id: 1,
@@ -100,35 +105,45 @@ export const Frame = (): JSX.Element => {
   return (
     <div className="bg-neutral-100 flex flex-row justify-center w-full">
       <div className="bg-neutral-100 overflow-hidden w-[100%] relative">
-        <nav className="flex items-center justify-between px-7 h-[84px] relative">
-          <img
-            className="w-[70px] h-[70px] object-cover"
-            alt="Rosa de Luz Logo"
-            src="/image-303.png"
-          />
+      <header className="flex items-center justify-between px-7 h-[84px] bg-white shadow-md relative">
+            {/* Logo */}
+            <a href="/" className="w-[70px] h-[70px]">
+                <img
+                    className="w-full h-full object-contain"
+                    alt="Rosa de Luz Logo"
+                    src="/image-303.png"
+                />
+            </a>
 
-          <div className="flex items-center space-x-6">
-            <div className="font-['Montserrat',Helvetica] font-medium text-[#c30000] text-[13px] tracking-[1.69px]">
-            <a href="/"> Home</a>
+            {/* Desktop Menu */}
+            <nav className="hidden lg:flex items-center space-x-8">
+                <a href="/" className="font-medium text-[#c30000] text-[13px] tracking-[1.69px] hover:text-black">Home</a>
+                <a href="/produtos" className="font-medium text-black text-[13px] tracking-[1.69px] hover:text-[#c30000]">Compra</a>
+                <a href="/sobre" className="font-medium text-black text-[13px] tracking-[1.69px] hover:text-[#c30000]">Sobre</a>
+                <a href="/contato" className="font-medium text-black text-[13px] tracking-[1.69px] hover:text-[#c30000]">Contato</a>
+            </nav>
+
+            {/* Icons */}
+            <div className="flex items-center space-x-4">
+                <SearchIcon className="w-5 h-5 cursor-pointer" />
+                <ShoppingBagIcon className="w-5 h-5 cursor-pointer" />
             </div>
-            <div className="font-['Montserrat',Helvetica] font-medium text-black text-[13px] tracking-[1.69px]">
-              <a href="/compra"> Compra</a>
-            </div>
-            <div className="font-['Montserrat',Helvetica] font-medium text-black text-[13px] tracking-[1.69px]">
-              <a href="/sobre"> Sobre </a>
-            </div>
-            <div className="font-['Montserrat',Helvetica] font-medium text-black text-[13px] tracking-[1.69px]">
-            <a href="/contato"> contato </a>
-            </div>
-            <div className="font-['Montserrat',Helvetica] font-medium text-black text-[13px] tracking-[1.69px]">
-            <a href="/sobre"> Produtos </a>
-            </div>
-            <div className="flex items-center space-x-4 ml-6">
-              <SearchIcon className="w-5 h-5" />
-              <ShoppingBagIcon className="w-5 h-5" />
-            </div>
-          </div>
-        </nav>
+
+            {/* Mobile Menu Button */}
+            <button onClick={toggleMenu} className="lg:hidden text-black">
+                {isOpen ? <XIcon className="w-7 h-7" /> : <MenuIcon className="w-7 h-7" />}
+            </button>
+
+            {/* Mobile Menu */}
+            {isOpen && (
+                <nav className="absolute top-[84px] left-0 w-full bg-white shadow-lg p-6 flex flex-col space-y-6 z-20">
+                    <a href="/" className="font-medium text-[#c30000] text-lg tracking-[1.69px] hover:text-black">Home</a>
+                    <a href="/produtos" className="font-medium text-black text-lg tracking-[1.69px] hover:text-[#c30000]">Compra</a>
+                    <a href="/sobre" className="font-medium text-black text-lg tracking-[1.69px] hover:text-[#c30000]">Sobre</a>
+                    <a href="/contato" className="font-medium text-black text-lg tracking-[1.69px] hover:text-[#c30000]">Contato</a>
+                </nav>
+            )}
+        </header>
 
         {/* Product Info */}
         <div className="flex flex-col md:flex-row gap-8 mt-8 px-4 md:px-16">
@@ -145,7 +160,7 @@ export const Frame = (): JSX.Element => {
             </div>
             <section className="w-full px-[10%] py-[10%]">
               <div>
-                {productDat.slice(0, 1).map((product) => (
+                {productDat.slice(0, 1).map(() => (
                   <CardContent className="p-0 flex flex-col items-center">
                     <div className="w-full px-70 mt-[10px]">
                       <div className="w-[237px] h-[43px] mt-[8px] bg-white shadow-[0px_4px_10px_#00000040] flex items-center justify-start px-3.5 space-x-[14px]">
@@ -203,27 +218,53 @@ export const Frame = (): JSX.Element => {
         <Separator className="bg-[#d9d9d9] my-[30px]" />
 
         {/* Footer */}
-        <footer className="w-full h-[100%] bg-[#2a2a2a] text-white px-[10%] pt-[87px]">
-          <div className="flex justify-between">
-            {Object.entries(footerData).map(([section, items]) => (
-              <div key={section}>
-                <h3 className="font-['Montserrat',Helvetica] font-semibold text-xl mb-[33px]">
-                  {section.charAt(0).toUpperCase() + section.slice(1)}
-                </h3>
-                <ul className="space-y-[27px]">
-                  {items.map((item, index) => (
-                    <li
-                      key={index}
-                      className="font-['Montserrat',Helvetica] font-normal text-xs"
-                    >
+       <footer className="w-full bg-[#2a2a2a] text-white py-12 px-4 md:px-16 lg:px-32">
+            <div className="w-full max-w-screen-xl mx-auto flex flex-wrap justify-between gap-8">
+              <div>
+                <h3 className="font-['Montserrat',Helvetica] font-semibold text-lg mb-6">Produtos</h3>
+                <ul className="space-y-4">
+                  {footerData.products.map((item, index) => (
+                    <li key={index} className="font-['Montserrat',Helvetica] font-normal text-sm">
                       {item}
                     </li>
                   ))}
                 </ul>
               </div>
-            ))}
-          </div>
-        </footer>
+      
+              <div>
+                <h3 className="font-['Montserrat',Helvetica] font-semibold text-lg mb-6">Ajuda</h3>
+                <ul className="space-y-4">
+                  {footerData.help.map((item, index) => (
+                    <li key={index} className="font-['Montserrat',Helvetica] font-normal text-sm">
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+      
+              <div>
+                <h3 className="font-['Montserrat',Helvetica] font-semibold text-lg mb-6">Social</h3>
+                <ul className="space-y-4">
+                  {footerData.social.map((item, index) => (
+                    <li key={index} className="font-['Montserrat',Helvetica] font-normal text-sm">
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+      
+              <div className="text-center">
+                <h3 className="font-['Montserrat',Helvetica] font-semibold text-lg mb-6">Formas de Pagamento</h3>
+                <img className="w-40 h-auto mx-auto" alt="Payment methods" src="/image-77.png" />
+              </div>
+            </div>
+      
+            <Separator className="bg-[#d9d9d9] my-8" />
+      
+            <p className="font-['Montserrat',Helvetica] font-normal text-xs text-center px-4">
+              ROSA DE LUZ Comércio LTDA S/A. – CNPJ 13.800.191/0001-69 - CEP 04773-000. Av. Coronel Octaviano de Freitas Costa, 463 - Socorro, São Paulo
+            </p>
+          </footer>
       </div>
     </div>
   );
