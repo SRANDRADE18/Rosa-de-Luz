@@ -3,76 +3,54 @@ import { Checkbox } from "../../components produtos/ui/checkbox";
 import { Separator } from "../../components/ui/separator";
 import { SearchIcon, ShoppingBagIcon, MenuIcon, XIcon } from "lucide-react";
 import { useState } from 'react';
+import { Button } from "../../components/ui/button";
 
 export const Produtos = (): JSX.Element => {
   // Price range filter options
+ const [selectedPriceRanges, setSelectedPriceRanges] = useState([]);
+  const [selectedModels, setSelectedModels] = useState([]);
+
   const priceRanges = [
-    { id: "price-1", label: "Até R$ 25,00" },
-    { id: "price-2", label: "De R$ 50,00 A R$ 75,00" },
-    { id: "price-3", label: "De R$ 75,00 A R$ 100,00" },
-    { id: "price-4", label: "De R$ 100,00 A R$ 150,00" },
-    { id: "price-5", label: "Acima de R$ 150,00" },
+    { id: "price-1", label: "Até R$ 25,00", min: 0, max: 25 },
+    { id: "price-2", label: "De R$ 50,00 A R$ 75,00", min: 50, max: 75 },
+    { id: "price-3", label: "De R$ 75,00 A R$ 100,00", min: 75, max: 100 },
+    { id: "price-4", label: "De R$ 100,00 A R$ 150,00", min: 100, max: 150 },
+    { id: "price-5", label: "Acima de R$ 150,00", min: 150, max: Infinity }
   ];
 
-  // Model filter options
   const modelTypes = [
     { id: "model-1", label: "Colares" },
     { id: "model-2", label: "Anéis" },
     { id: "model-3", label: "Brincos" },
     { id: "model-4", label: "Banhados a Ouro" },
-    { id: "model-5", label: "Banhados a Prata" },
+    { id: "model-5", label: "Banhados a Prata" }
   ];
 
+  const [products] = useState([
+    { id: 1, image: "/image-4.png", description: "Modelo de pulseira bem especial", price: 35, model: "Pulseiras" },
+    { id: 2, image: "/image-5.png", description: "Pulseiras mãe e filho", price: 150, model: "Pulseiras" },
+    { id: 3, image: "/image-6.png", description: "Pulseiras Personalizadas", price: 35.5, model: "Pulseiras" }
+  ]);
 
-  const navItems = [
-    { name: "Home", href: "/", active: true },
-    { name: "Comprar", href: "compra", active: false },
-    { name: "Sobre", href: "sobre", active: false },
-    { name: "Contato", href: "contato", active: false },
-    { name: "Produtos", href: "/produtos", active: false },
-  ];
+  const filteredProducts = products.filter(product => {
+    const inPriceRange = selectedPriceRanges.length === 0 || selectedPriceRanges.some(range => product.price >= range.min && product.price <= range.max);
+    const inModel = selectedModels.length === 0 || selectedModels.includes(product.model);
+    return inPriceRange && inModel;
+  });
+
+  const handlePriceChange = (range) => {
+    setSelectedPriceRanges((prev) => prev.includes(range) ? prev.filter(r => r !== range) : [...prev, range]);
+  };
+
+  const handleModelChange = (model) => {
+    setSelectedModels((prev) => prev.includes(model) ? prev.filter(m => m !== model) : [...prev, model]);
+  };
+
+
+  
 
   // Product data
-  const products = [
-    {
-      id: 1,
-      image: "/image-4.png",
-      description:
-        "Modelo de pulseira bem especial, porque representa muito do que eu creio",
-      price: "R$35,00",
-    },
-    {
-      id: 2,
-      image: "/image-5.png",
-      description: "Pulseiras mãe e filho",
-      price: "R$150,00",
-    },
-    {
-      id: 3,
-      image: "/image-6.png",
-      description: "Pulseiras Personalizadas",
-      price: "R$35,50",
-    },
-    {
-      id: 4,
-      image: "/image-4.png",
-      description:
-        "Modelo de pulseira bem especial, porque representa muito do que eu creio",
-      price: "R$35,00",
-    },
-    {
-      id: 5,
-      image: "/image-5.png",
-      description: "Pulseiras mãe e filho",
-      price: "R$150,00",
-    },
-    {
-      id: 6,
-      image: "/image-6.png",
-      description: "Pulseiras Personalizadas",
-      price: "R$35,50",
-    },
-  ];
+
 
   // Footer links
   const navItems2 = [
@@ -144,141 +122,83 @@ export const Produtos = (): JSX.Element => {
 
 
         {/* Hero Section */}
-        <section className="flex w-full h-[534px]">
-          <img
-            className="w-[498px] h-[534px] object-cover"
-            alt="Jewelry showcase"
-            src="/image.png"
-          />
-          <div className="bg-[#212a2f] flex-1 flex items-center justify-center p-10">
-            <div className="max-w-[572px] [font-family:'Montserrat',Helvetica] font-medium text-white text-base tracking-[2.08px] leading-normal">
-              Quem disse que estilo não pode ter alma?
-              <br /> Aqui, cada bijuteria é feita com intenção, pra te lembrar
-              que você não precisa se encaixar — só se expressar.
-              <br /> Escolha peças que contem a sua história, do seu jeitinho.
-              <br />
-              Porque o verdadeiro luxo é ser você mesma.
-            </div>
-          </div>
-        </section>
+<section className="flex w-full h-[534px]">
+  {/* Imagem à esquerda com sobreposição */}
+  <div
+    className="relative w-1/2 h-full bg-cover bg-no-repeat"
+    style={{
+      backgroundImage: "url('/art.png')",
+      backgroundPosition: "center top"
+    }}
+  >
+    <div className="absolute inset-0 bg-black bg-opacity-40" />
+  </div>
 
-        {/* Catalog Section */}
-        <section className="flex mt-10">
-          {/* Filters */}
-          <div className="w-[274px] ml-2 space-y-4">
-            {/* Price Range Filter */}
-            <div>
-              <div className="w-full h-[37px] bg-[#393939] flex items-center px-4">
-                <h3 className="[font-family:'Montserrat',Helvetica] font-medium text-white text-base tracking-[2.08px]">
-                  FAIXA DE PREÇO
-                </h3>
-              </div>
-              <Card className="shadow-[0px_4px_4px_#00000040] rounded-none">
-                <CardContent className="p-6 space-y-4">
-                  {priceRanges.map((range) => (
-                    <div key={range.id} className="flex items-center space-x-2">
-                      <Checkbox
-                        id={range.id}
-                        className="w-[22px] h-[22px] rounded-none bg-[#393939]"
-                      />
-                      <label
-                        htmlFor={range.id}
-                        className="[font-family:'Montserrat',Helvetica] font-medium text-black text-xs tracking-[1.56px]"
-                      >
-                        {range.label}
-                      </label>
-                    </div>
-                  ))}
-                </CardContent>
-              </Card>
-            </div>
+  {/* Texto à direita com fundo dourado brilhante */}
+  <div className="w-1/2 h-full flex items-center justify-center bg-gradient-to-r from-[#c7a17a] to-[#e2c08a] bg-[length:200%_200%] animate-[shine_5s_linear_infinite] p-10">
+    <div className="max-w-[500px] [font-family:'Montserrat',Helvetica] font-medium text-base tracking-[2.08px] leading-normal space-y-4">
+      <p className="text-[24px] text-white">
+        Cada peça carrega um sussurro da sua essência.
+      </p>
+      <p className="text-[24px] text-white">
+        Não é sobre seguir tendências — é sobre eternizar momentos.
+      </p>
+      <p className="text-[24px] text-white">
+        Use o que te representa.
+      </p>
+      <p className="italic text-[26px] text-white">
+        Rosa de Luz: beleza com verdade.
+      </p>
+    </div>
+  </div>
 
-            {/* Model Filter */}
-            <div>
-              <div className="w-full h-[37px] bg-[#393939] flex items-center px-4">
-                <h3 className="[font-family:'Montserrat',Helvetica] font-medium text-white text-base tracking-[2.08px]">
-                  MODELO
-                </h3>
-              </div>
-              <Card className="shadow-[0px_4px_4px_#00000040] rounded-none">
-                <CardContent className="p-6 space-y-4">
-                  {modelTypes.map((model) => (
-                    <div key={model.id} className="flex items-center space-x-2">
-                      <Checkbox
-                        id={model.id}
-                        className="w-[22px] h-[22px] rounded-none bg-[#393939]"
-                      />
-                      <label
-                        htmlFor={model.id}
-                        className="[font-family:'Montserrat',Helvetica] font-medium text-black text-xs tracking-[1.56px]"
-                      >
-                        {model.label}
-                      </label>
-                    </div>
-                  ))}
-                </CardContent>
-              </Card>
-            </div>
-          </div>
+  <style jsx>{`
+    @keyframes shine {
+      0% { background-position: 0% 0%; }
+      50% { background-position: 100% 100%; }
+      100% { background-position: 0% 0%; }
+    }
+  `}</style>
+</section>
 
-          {/* Catalog Header */}
-          <div className="flex-1 pl-8">
-            <div className="w-[274px] h-[37px] bg-[#393939] flex items-center justify-center mb-8">
-              <h3 className="[font-family:'Montserrat',Helvetica] font-medium text-white text-[11px] tracking-[1.43px]">
-                CATÁLOGO
-              </h3>
-            </div>
 
-            {/* Products Grid */}
-    <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-  {products.map((product) => (
-    <Card
-      key={product.id}
-      className="w-[297px] h-[393px] bg-gradient-to-b from-[#f8f0e8] to-[#f4e4cf] shadow-lg rounded-xl border border-[#bf8c50] transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:bg-gradient-to-br hover:from-[#f4e4cf] hover:to-[#f8f0e8] hover:z-10"
-    >
-      <CardContent className="p-0">
-        <div className="flex flex-col items-center">
-          <img
-            className="w-[241px] h-[209px] mt-[30px] object-cover rounded-lg border border-[#bf8c50] shadow-md"
-            alt={product.description}
-            src={product.image}
-          />
-          <div className="w-[242px] mt-6 font-['Montserrat',Helvetica] font-semibold text-[#5e3a2d] text-base tracking-[2.08px] leading-normal text-center">
-            {product.description}
+
+
+
+   <section className="flex mt-10">
+      <div className="w-[274px] ml-2 space-y-4">
+        <h3 className="font-medium text-white text-xl  tracking-[2.08px] bg-[#393939] p-4">FAIXA DE PREÇO</h3>
+        {priceRanges.map((range) => (
+          <div key={range.id} className="flex items-center space-x-2">
+            <input className="w-[22px] h-[22px] rounded-none bg-[#393939]" type="checkbox" onChange={() => handlePriceChange(range)} />
+            <label className="text-black font-medium text-xl ">{range.label}</label>
           </div>
-          <div className="mt-auto mb-5 self-start ml-[27px] font-['Montserrat',Helvetica] font-medium text-[#bf8c50] text-base tracking-[2.08px]">
-            {product.price}
+        ))}
+
+        <h3 className="font-medium text-white text-xl  tracking-[2.08px] bg-[#393939] p-4">MODELO</h3>
+        {modelTypes.map((model) => (
+          <div className="flex items-center space-x-2" key={model.id}>
+            <input className="w-[22px] h-[22px] rounded-none bg-[#393939]" type="checkbox" onChange={() => handleModelChange(model.label)} />
+            <label className="text-black font-medium text-xl ">{model.label}</label>
           </div>
+        ))}
+      </div>
+
+      <div className="flex-1 pl-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {filteredProducts.map(product => (
+            <Card key={product.id} className="w-[297px] h-[393px] bg-gradient-to-b from-[#f8f0e8] to-[#f4e4cf] shadow-lg rounded-xl border border-[#bf8c50] transition-transform transform hover:scale-105">
+              <CardContent className="p-4 flex flex-col items-center">
+                <img src={product.image} alt={product.description} className="w-[241px] h-[209px] object-cover rounded-lg border border-[#bf8c50]" />
+                <p className="font-medium text-[#5e3a2d] text-xl  mt-4">{product.description}</p>
+                <p className="font-semibold text-[#bf8c50] text-xl mt-2">R${product.price.toFixed(2)}</p>
+                <Button className="mt-4 bg-[#bf8c50] text-white hover:bg-[#a67c44]">Comprar</Button>
+              </CardContent>
+            </Card>
+          ))}
         </div>
-      </CardContent>
-    </Card>
-  ))}
-</div>
-
-
-   
-
-
-            {/* Pagination */}
-            <div className="flex justify-center mt-16">
-              <div className="w-[337px] h-16 bg-[#d6ad6033] rounded-[10px] flex items-center justify-between px-8">
-                <img
-                  className="w-[35px] h-[35px] object-cover transform rotate-180 cursor-pointer"
-                  alt="Página anterior"
-                  src="/icons8-seta-direita-48-2.png"
-                />
-                <div className="[font-family:'Montserrat',Helvetica] font-semibold text-[#4a3f35] text-lg">
-                  1&nbsp;&nbsp; 2&nbsp;&nbsp; 3&nbsp;&nbsp; 4&nbsp;&nbsp; 5
-                </div>
-                <img
-                  className="w-[35px] h-[35px] object-cover cursor-pointer"
-                  alt="Próxima página"
-                  src="/icons8-seta-direita-48-2.png"
-                />
-              </div>
-            </div>
-          </div>
-        </section>
+      </div>
+    </section>
 
     {/* Footer */}
 <footer className="w-full bg-[#2a2a2a] text-white px-[20px] sm:px-[40px] lg:px-[179px] pt-[87px]">

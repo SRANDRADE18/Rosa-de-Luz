@@ -114,97 +114,118 @@ export const Template = (): JSX.Element => {
         </header>
 
         {/* Hero Section */}
-     <section className="w-full flex relative">
-      {/* Imagem da esquerda */}
-      <div className="relative w-1/2 h-full">
-        <img
-          className="w-full h-full object-cover"
-          alt="Jewelry showcase left"
-          src="/image-2.png"
-        />
-      </div>
-      {/* Imagem da direita */}
-      <div className="relative w-1/2 h-full">
-        <img
-          className="w-full h-full object-cover"
-          alt="Jewelry showcase right"
-          src="/image-3.png"
-        />
-      </div>
-      {/* Texto central */}
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full text-center px-4 md:px-0">
-        <h1 className="font-['Montserrat',Helvetica] font-semibold text-white text-3xl md:text-5xl tracking-wide">
-          R
-          <span className="font-['Dancing_Script',Helvetica] font-normal text-[#f2eb1d] text-5xl md:text-7xl">
-            o
-          </span>
-          SA DE LUZ
-        </h1>
-      </div>
-    </section>
+ <section className="w-full flex relative h-[600px] sm:h-[500px]">
+  {/* Imagem da esquerda */}
+  <div className="w-1/2 h-full">
+    <img
+      className="w-full h-full object-cover"
+      alt="Jewelry showcase left"
+      src="/image-2.png"
+    />
+  </div>
 
-        {/* Featured Products Section */}
- <section className="flex justify-center w-full px-5 py-10">
+  {/* Imagem da direita */}
+  <div className="w-1/2 h-full">
+    <img
+      className="w-full h-full object-cover"
+      alt="Jewelry showcase right"
+      src="/image-3.png"
+    />
+  </div>
+
+  {/* Texto central */}
+  <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full text-center px-4 md:px-0">
+    <h1 className="font-['Montserrat',Helvetica] font-semibold text-white text-3xl md:text-5xl tracking-wide">
+      R
+      <span className="font-['Dancing_Script',Helvetica] font-normal text-[#f2eb1d] text-5xl md:text-7xl">
+        o
+      </span>
+      SA DE LUZ
+    </h1>
+  </div>
+</section>
+
+{/* Featured Products Section */}
+<section className="flex justify-center w-full px-5 py-10">
   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-center">
-    {productData.slice(0, 3).map((product) => (
-      <Card
-        key={product.id}
-        className="w-full max-w-xs mx-auto h-[400px] bg-[#bf8c5017] shadow-[0px_4px_10px_#00000040]"
-      >
-        <CardContent className="p-0 flex flex-col items-center">
-          <img
-            className="w-52 h-52 mt-7 object-cover"
-            alt={product.title}
-            src={product.image}
-          />
-          <div className="w-full px-7 mt-9">
-            <p className="font-['Montserrat',Helvetica] font-medium text-black text-base tracking-[2.08px]">
-              {product.title}
-            </p>
-            <div className="w-full max-w-[237px] h-[43px] mt-2 bg-white shadow-[0px_4px_10px_#00000040] flex items-center justify-start px-3.5 space-x-3.5">
-              {[...Array(5)].map((_, i) => (
-                <img
-                  key={i}
-                  className="w-8 h-6"
-                  alt="Star rating"
-                  src="/vector.svg"
-                />
-              ))}
+    {productData.slice(0, 3).map((product, index) => {
+      const visibilityClasses = [
+        "block",              // index 0: sempre visível
+        "hidden sm:block",    // index 1: visível a partir de sm
+        "hidden lg:block",    // index 2: visível só em lg
+      ];
+
+      return (
+        <Card
+          key={product.id}
+          className={`w-full max-w-xs mx-auto h-[400px] bg-[#bf8c5017] shadow-[0px_4px_10px_#00000040] ${visibilityClasses[index]}`}
+        >
+          <CardContent className="p-0 flex flex-col items-center">
+            <img
+              className="w-52 h-52 mt-7 object-cover"
+              alt={product.title}
+              src={product.image}
+            />
+            <div className="w-full px-7 mt-9">
+              <p className="font-['Montserrat',Helvetica] font-medium text-black text-base tracking-[2.08px]">
+                {product.title}
+              </p>
+              <div className="w-full max-w-[237px] h-[43px] mt-2 bg-white shadow-[0px_4px_10px_#00000040] flex items-center justify-start px-3.5 space-x-3.5">
+                {[...Array(5)].map((_, i) => (
+                  <img
+                    key={i}
+                    className="w-8 h-6"
+                    alt="Star rating"
+                    src="/vector.svg"
+                  />
+                ))}
+              </div>
             </div>
-          </div>
-        </CardContent>
-      </Card>
-    ))}
+          </CardContent>
+        </Card>
+      );
+    })}
   </div>
 </section>
 
-        {/* Product Showcase Section */}
-  <section className="w-full px-2 py-10">
-  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-12 justify-center">
-    {productData.slice(3, 7).map((product) => (
-      <Card
-        key={product.id}
-        className="w-full max-w-[297px] h-[393px] bg-[#bf8c5033] shadow-[0px_4px_10px_#00000040] mx-auto"
-      >
-        <CardContent className="p-0 flex flex-col items-center">
-          <img
-            className="w-[241px] h-[209px] mt-7 object-cover max-w-full"
-            alt={product.title}
-            src={product.image}
-          />
-          <div className="w-full px-7 mt-4">
-            <p className="font-['Montserrat',Helvetica] font-medium text-black text-base tracking-[2.08px]">
-              {product.title}
-            </p>
-            <p className="font-['Montserrat',Helvetica] font-medium text-black text-base text-center tracking-[2.08px] mt-5">
-              {product.price}
-            </p>
-          </div>
-        </CardContent>
-      </Card>
-    ))}
+
+<section className="w-full px-2 py-10">
+  <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-12 justify-center">
+    {productData.slice(3, 7).map((product, index) => {
+      // Define visibilidade por index e breakpoint
+      const visibilityClasses = [
+        "block",                      // index 0: sempre visível
+        "hidden md:block",            // index 1: visível a partir de md
+        "hidden md:block",            // index 2: visível a partir de md
+        "hidden xl:block",            // index 3: visível só em xl
+      ];
+
+      return (
+        <Card
+          key={product.id}
+          className={`w-full max-w-[297px] h-[393px] bg-[#bf8c5033] shadow-[0px_4px_10px_#00000040] mx-auto ${visibilityClasses[index]}`}
+        >
+          <CardContent className="p-0 flex flex-col items-center">
+            <img
+              className="w-[241px] h-[209px] mt-7 object-cover max-w-full"
+              alt={product.title}
+              src={product.image}
+            />
+            <div className="w-full px-7 mt-4">
+              <p className="font-['Montserrat',Helvetica] font-medium text-black text-base tracking-[2.08px]">
+                {product.title}
+              </p>
+              <p className="font-['Montserrat',Helvetica] font-medium text-black text-base text-center tracking-[2.08px] mt-5">
+                {product.price}
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+      );
+    })}
   </div>
 </section>
+
 
         {/* Banner Section */}
 <section className="w-full flex flex-col lg:flex-row min-h-[300px]">
@@ -230,15 +251,15 @@ export const Template = (): JSX.Element => {
 
         {/* Featured Collection */}
 <section
-  className="w-full h-[600px] sm:h-[auto] bg-[url(/conceito-de-moda-e-beleza-mulher-elegante-com-vestido-preto-de-l.png)] bg-cover bg-center flex items-center justify-center sm:justify-end px-4 sm:pr-[55px] py-10"
+  className="w-full min-h-[600px] bg-[url(/conceito-de-moda-e-beleza-mulher-elegante-com-vestido-preto-de-l.png)] bg-cover bg-center flex items-center justify-center xl:justify-end px-4 xl:px-[55px] py-10"
 >
-  <div className="flex gap-8 max-w-[650px] w-full">
+  <div className="flex gap-8 max-w-[550px] w-full ">
     {productData.slice(0, 2).map((product, index) => (
       <Card
         key={product.id}
         className={`
-          w-full max-w-[297px] h-[393px] bg-[#ffffff17] shadow-[0px_4px_10px_#00000040] 
-          ${index === 0 ? "hidden xl:block" : "mx-auto sm:mx-0"}
+          max-w-[297px] h-[393px] bg-[#ffffff17] shadow-[0px_4px_10px_#00000040]
+          hidden xl:block
         `}
       >
         <CardContent className="p-0 flex flex-col items-center">
@@ -260,6 +281,7 @@ export const Template = (): JSX.Element => {
     ))}
   </div>
 </section>
+
 
 
 
@@ -291,7 +313,7 @@ export const Template = (): JSX.Element => {
     </Button>
   </div>
 
-  <div className="w-full lg:w-1/2">
+  <div className="w-full  lg:w-1/2 ">
     <img
       className="w-full h-full object-contain"
       alt="About section image"
