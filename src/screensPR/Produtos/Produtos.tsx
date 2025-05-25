@@ -260,7 +260,7 @@ Olá! Gostaria de finalizar meu pedido com os seguintes detalhes:
 
 
    <section className="flex mt-10">
-      <div className="w-[274px] ml-2 space-y-4">
+      <div className="hidden md:block w-[274px] ml-2 space-y-4">
         <h3 className="font-medium text-white text-xl  tracking-[2.08px] bg-[#393939] p-4">FAIXA DE PREÇO</h3>
         {priceRanges.map((range) => (
           <div key={range.id} className="flex items-center space-x-2">
@@ -276,7 +276,16 @@ Olá! Gostaria de finalizar meu pedido com os seguintes detalhes:
             <label className="text-black font-medium text-xl ">{model.label}</label>
           </div>
         ))}
+
+      <div className="block md:hidden w-full flex justify-end px-4 mb-4">
+  <button className="bg-[#C09D77] text-white px-4 py-2 rounded-full shadow-md">
+    Filtrar
+  </button>
+</div>
+
       </div>
+
+  
 
     <div className={`bg-neutral-100 flex flex-row justify-center w-full`}>
 
