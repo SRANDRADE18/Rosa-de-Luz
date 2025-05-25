@@ -120,13 +120,22 @@ export const Frame = (): JSX.Element => {
                 <a href="/" className="font-medium text-[#c30000] text-[13px] tracking-[1.69px] hover:text-black">Home</a>
                 <a href="/produtos" className="font-medium text-black text-[13px] tracking-[1.69px] hover:text-[#c30000]">Compra</a>
                 <a href="/sobre" className="font-medium text-black text-[13px] tracking-[1.69px] hover:text-[#c30000]">Sobre</a>
-                <a href="/contato" className="font-medium text-black text-[13px] tracking-[1.69px] hover:text-[#c30000]">Contato</a>
+                        <a
+  href="https://wa.me/5599999999999"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="font-medium text-black text-lg tracking-[1.69px] hover:text-[#c30000]"
+>
+  Contato
+</a>
             </nav>
 
             {/* Icons */}
             <div className="flex items-center space-x-4">
                 <SearchIcon className="w-5 h-5 cursor-pointer" />
+                
                 <ShoppingBagIcon className="w-5 h-5 cursor-pointer" />
+             
             </div>
 
             {/* Mobile Menu Button */}
@@ -140,7 +149,14 @@ export const Frame = (): JSX.Element => {
                     <a href="/" className="font-medium text-[#c30000] text-lg tracking-[1.69px] hover:text-black">Home</a>
                     <a href="/produtos" className="font-medium text-black text-lg tracking-[1.69px] hover:text-[#c30000]">Compra</a>
                     <a href="/sobre" className="font-medium text-black text-lg tracking-[1.69px] hover:text-[#c30000]">Sobre</a>
-                    <a href="/contato" className="font-medium text-black text-lg tracking-[1.69px] hover:text-[#c30000]">Contato</a>
+                            <a
+  href="https://wa.me/5599999999999"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="font-medium text-black text-lg tracking-[1.69px] hover:text-[#c30000]"
+>
+  Contato
+</a>
                 </nav>
             )}
         </header>

@@ -88,7 +88,14 @@ export const Template = (): JSX.Element => {
                 <a href="/" className="font-medium text-[#c30000] text-[13px] tracking-[1.69px] hover:text-black">Home</a>
                 <a href="/produtos" className="font-medium text-black text-[13px] tracking-[1.69px] hover:text-[#c30000]">Compra</a>
                 <a href="/sobre" className="font-medium text-black text-[13px] tracking-[1.69px] hover:text-[#c30000]">Sobre</a>
-                <a href="/contato" className="font-medium text-black text-[13px] tracking-[1.69px] hover:text-[#c30000]">Contato</a>
+                        <a
+  href="https://wa.me/5599999999999"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="font-medium text-black text-lg tracking-[1.69px] hover:text-[#c30000]"
+>
+  Contato
+</a>
             </nav>
 
             {/* Icons */}
@@ -108,7 +115,14 @@ export const Template = (): JSX.Element => {
                     <a href="/" className="font-medium text-[#c30000] text-lg tracking-[1.69px] hover:text-black">Home</a>
                     <a href="/produtos" className="font-medium text-black text-lg tracking-[1.69px] hover:text-[#c30000]">Compra</a>
                     <a href="/sobre" className="font-medium text-black text-lg tracking-[1.69px] hover:text-[#c30000]">Sobre</a>
-                    <a href="/contato" className="font-medium text-black text-lg tracking-[1.69px] hover:text-[#c30000]">Contato</a>
+                            <a
+  href="https://wa.me/5599999999999"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="font-medium text-black text-lg tracking-[1.69px] hover:text-[#c30000]"
+>
+  Contato
+</a>
                 </nav>
             )}
         </header>
@@ -242,7 +256,7 @@ export const Template = (): JSX.Element => {
     <img
       className="w-full h-full object-cover"
       alt="Jewelry showcase"
-      src="/image.png"
+      src="/look3.jpeg"
     />
   </div>
 </section>
@@ -251,34 +265,52 @@ export const Template = (): JSX.Element => {
 
         {/* Featured Collection */}
 <section
-  className="w-full min-h-[600px] bg-[url(/conceito-de-moda-e-beleza-mulher-elegante-com-vestido-preto-de-l.png)] bg-cover bg-center flex items-center justify-center xl:justify-end px-4 xl:px-[55px] py-10"
+  className="w-full min-h-[600px]  bg-cover bg-center flex items-center justify-center px-4 xl:px-[55px] py-10"
 >
-  <div className="flex gap-8 max-w-[550px] w-full ">
-    {productData.slice(0, 2).map((product, index) => (
-      <Card
-        key={product.id}
-        className={`
-          max-w-[297px] h-[393px] bg-[#ffffff17] shadow-[0px_4px_10px_#00000040]
-          hidden xl:block
-        `}
-      >
-        <CardContent className="p-0 flex flex-col items-center">
-          <img
-            className="w-[241px] h-[209px] mt-7 object-cover max-w-full"
-            alt={product.title}
-            src={product.image}
-          />
-          <div className="w-full px-7 mt-[46px]">
-            <p className="font-['Montserrat',Helvetica] font-medium text-black text-base tracking-[2.08px]">
-              {product.title}
-            </p>
-            <p className="font-['Montserrat',Helvetica] font-medium text-black text-base text-center tracking-[2.08px] mt-[20px]">
-              {product.price}
-            </p>
-          </div>
-        </CardContent>
-      </Card>
-    ))}
+  <div className="flex flex-col xl:flex-row justify-between items-center w-full max-w-7xl gap-10 bg-white/70 p-6 rounded-2xl shadow-md">
+    
+    {/* Cards de produtos */}
+    <div className="flex gap-8">
+      {productData.slice(0, 2).map((product, index) => (
+        <Card
+          key={product.id}
+          className={`
+            max-w-[297px] h-[393px] bg-[#ffffffee] shadow-[0px_4px_10px_#00000040]
+            ${index === 1 ? 'hidden max-[1000px]:hidden' : ''}
+          `}
+        >
+          <CardContent className="p-0 flex flex-col items-center">
+            <img
+              className="w-[241px] h-[209px] mt-7 object-cover max-w-full"
+              alt={product.title}
+              src={product.image}
+            />
+            <div className="w-full px-7 mt-[46px] text-center">
+              <p className="font-['Montserrat',Helvetica] font-medium text-black text-base tracking-[2.08px]">
+                {product.title}
+              </p>
+              <p className="font-['Montserrat',Helvetica] font-medium text-black text-base tracking-[2.08px] mt-[20px]">
+                {product.price}
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+      ))}
+    </div>
+
+    {/* Texto e botão */}
+    <div className="text-center max-w-[500px] space-y-4">
+      <h2 className="text-2xl font-semibold">
+        Dê vida à sua visão de uma bijuteria perfeita.
+      </h2>
+      <p className="text-gray-700 text-sm">
+        Deixe sua marca e conte sua história através de designs exclusivos.
+        Clique abaixo para começar a transformar sua imaginação em realidade.
+      </p>
+      <button className="bg-[#C09D77] text-white px-6 py-2 rounded-full shadow-md hover:bg-[#a68463] transition">
+        PERSONALIZE JÁ
+      </button>
+    </div>
   </div>
 </section>
 
@@ -287,16 +319,10 @@ export const Template = (): JSX.Element => {
 
 
 
+
         {/* Personalization CTA */}
 
-  <section className="w-full bg-white flex flex-col lg:flex-row flex-wrap items-center justify-center px-4 py-10 gap-10 lg:gap-20">
-  <p className="w-full lg:w-auto max-w-[604px] font-sans font-medium text-[#5e3a2d] text-base sm:text-lg md:text-xl lg:text-2xl text-center lg:text-left tracking-normal">
-    Dê vida à sua visão de uma bijuteria perfeita. Deixe sua marca e conte sua história através de designs exclusivos. Clique abaixo para começar a transformar sua imaginação em realidade.
-  </p>
-  <Button className="w-[216px] h-16 bg-[#d9b08c] rounded-[15px] font-['Montserrat',Helvetica] font-medium text-black text-base tracking-[2.08px] mx-auto lg:mx-0">
-    PERSONALIZE JÁ
-  </Button>
-</section>
+
 
 
         {/* About Section */}
@@ -309,7 +335,7 @@ export const Template = (): JSX.Element => {
       descubra como estilo e sustentabilidade caminham juntos.
     </p>
     <Button className="mt-8 w-full max-w-[216px] h-16 bg-[#d9b08cad] rounded-[15px] font-['Montserrat',Helvetica] font-medium text-black text-base tracking-[2.08px]">
-      SAIBA MAIS
+     <a href="/sobre"> SAIBA MAIS </a> 
     </Button>
   </div>
 

@@ -138,7 +138,7 @@ const generateProtocol = (productId: string): string => {
 const handleCheckout = (productData) => {
   const protocol = generateProtocol(productData.id);
 
-  const message = `
+  const message = ` 
 Olá! Gostaria de finalizar meu pedido com os seguintes detalhes:
 
 🛍️ *Produto*: ${productData.description}
@@ -164,7 +164,7 @@ Olá! Gostaria de finalizar meu pedido com os seguintes detalhes:
 
   return (
     <div className="bg-neutral-100 flex flex-row justify-center w-full">
-      <div className="bg-neutral-100 overflow-hidden w-[1440px] relative">
+      <div className="bg-neutral-100 overflow-hidden w-[100%] relative">
         {/* Navigation */}
 
    <header className="flex items-center justify-between px-7 h-[84px] bg-white shadow-md relative">
@@ -182,7 +182,14 @@ Olá! Gostaria de finalizar meu pedido com os seguintes detalhes:
                 <a href="/" className="font-medium text-[#c30000] text-[13px] tracking-[1.69px] hover:text-black">Home</a>
                 <a href="/produtos" className="font-medium text-black text-[13px] tracking-[1.69px] hover:text-[#c30000]">Compra</a>
                 <a href="/sobre" className="font-medium text-black text-[13px] tracking-[1.69px] hover:text-[#c30000]">Sobre</a>
-                <a href="/contato" className="font-medium text-black text-[13px] tracking-[1.69px] hover:text-[#c30000]">Contato</a>
+                         <a
+  href="https://wa.me/5599999999999"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="font-medium text-black text-lg tracking-[1.69px] hover:text-[#c30000]"
+>
+  Contato
+</a>
             </nav>
 
             {/* Icons */}
@@ -202,28 +209,36 @@ Olá! Gostaria de finalizar meu pedido com os seguintes detalhes:
                     <a href="/" className="font-medium text-[#c30000] text-lg tracking-[1.69px] hover:text-black">Home</a>
                     <a href="/produtos" className="font-medium text-black text-lg tracking-[1.69px] hover:text-[#c30000]">Compra</a>
                     <a href="/sobre" className="font-medium text-black text-lg tracking-[1.69px] hover:text-[#c30000]">Sobre</a>
-                    <a href="/contato" className="font-medium text-black text-lg tracking-[1.69px] hover:text-[#c30000]">Contato</a>
+                  <a
+  href="https://wa.me/5599999999999"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="font-medium text-black text-lg tracking-[1.69px] hover:text-[#c30000]"
+>
+  Contato
+</a>
+
                 </nav>
             )}
         </header>
 
 
         {/* Hero Section */}
-<section className="flex w-full h-[534px]">
+<section className="flex w-full h-[540px] position-relative">
   {/* Imagem à esquerda com sobreposição */}
   <div
-    className="relative w-1/2 h-full bg-cover bg-no-repeat"
+    className="relative w-full max-[900px]:w-full min-[901px]:w-1/2 h-full bg-cover bg-no-repeat transition-all duration-300"
     style={{
       backgroundImage: "url('/art.png')",
-      backgroundPosition: "center top"
+      backgroundPosition: "center top",
     }}
   >
     <div className="absolute inset-0 bg-black bg-opacity-40" />
   </div>
 
   {/* Texto à direita com fundo dourado brilhante */}
-  <div className="w-1/2 h-full flex items-center justify-center bg-gradient-to-r from-[#c7a17a] to-[#e2c08a] bg-[length:200%_200%] animate-[shine_5s_linear_infinite] p-10">
-    <div className="max-w-[500px] [font-family:'Montserrat',Helvetica] font-medium text-base tracking-[2.08px] leading-normal space-y-4">
+  <div className="w-1/2 h-full flex items-center justify-center bg-gradient-to-r from-[#c7a17a] to-[#e2c08a] bg-[length:200%_200%] animate-[shine_5s_linear_infinite] p-10 max-[900px]:hidden">
+    <div className="max-w-[500px] font-['Montserrat'] font-medium text-base tracking-[2.08px] leading-normal space-y-4">
       <p className="text-[24px] text-white">
         Cada peça carrega um sussurro da sua essência.
       </p>
@@ -238,14 +253,6 @@ Olá! Gostaria de finalizar meu pedido com os seguintes detalhes:
       </p>
     </div>
   </div>
-
-  <style>{`
-    @keyframes shine {
-      0% { background-position: 0% 0%; }
-      50% { background-position: 100% 100%; }
-      100% { background-position: 0% 0%; }
-    }
-  `}</style>
 </section>
 
 
