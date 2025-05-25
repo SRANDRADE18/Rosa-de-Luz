@@ -118,59 +118,61 @@ export const SobreNs = (): JSX.Element => {
         </header>
 
         {/* Hero Section */}
-        <section className="relative w-full h-[961px]">
-          <div className="absolute w-full h-[688px] top-0 left-0 bg-[#dfb688]" />
-          <div className="absolute w-full h-[860px] top-0 left-0 bg-[url(/fundo02.png)] bg-cover bg-[50%_50%]">
-            <div className="absolute bottom-8 left-10 flex items-center space-x-12">
-              <div className="w-[163px] h-[54px]">
-              <Button className="w-48 h-[54px] bg-[#d9d9d9] rounded-[5px] hover:bg-[#c4c4c4]">
-                <span className="font-['Montserrat',Helvetica] font-semibold text-black text-sm tracking-[1.82px]">
-                SOBRE NÓS
-                </span>
-              </Button>    
-              </div>
+   <section className="relative w-full h-[961px] max-[900px]:hidden">
+  <div className="absolute w-full h-[688px] top-0 left-0 bg-[#dfb688]" />
+  <div className="absolute w-full h-[860px] top-0 left-0 bg-[url(/fundo02.png)] bg-cover bg-[50%_50%]">
+    <div className="absolute bottom-8 left-10 flex items-center space-x-12">
+      <div className="w-[163px] h-[54px]">
+        <Button className="w-48 h-[54px] bg-[#d9d9d9] rounded-[5px] hover:bg-[#c4c4c4]">
+          <span className="font-['Montserrat',Helvetica] font-semibold text-black text-sm tracking-[1.82px]">
+            SOBRE NÓS
+          </span>
+        </Button>
+      </div>
 
-              <Button className="w-48 h-[54px] bg-[#d9d9d9] rounded-[5px] hover:bg-[#c4c4c4]">
-                <span className="font-['Montserrat',Helvetica] font-semibold text-black text-sm tracking-[1.82px]">
-                  INSCREVA-SE JÁ
-                </span>
-              </Button>
-            </div>
-          </div>
-        </section>
+      <Button className="w-48 h-[54px] bg-[#d9d9d9] rounded-[5px] hover:bg-[#c4c4c4]">
+        <span className="font-['Montserrat',Helvetica] font-semibold text-black text-sm tracking-[1.82px]">
+          INSCREVA-SE JÁ
+        </span>
+      </Button>
+    </div>
+  </div>
+</section>
+
 
         {/* Products Section */}
-        <section className="flex justify-center mt-14 mb-14">
-          <div className="grid grid-cols-3 gap-[54px] w-[991px]">
-            {products.map((product) => (
-              <Card
-                key={product.id}
-                className="w-[297px] h-[393px] bg-[#ffffff17] shadow-[0px_4px_10px_#00000040]"
-              >
-                <CardContent className="p-0 flex flex-col items-center">
-                  <img
-                    className="w-[209px] h-[209px] mt-[29px] object-cover"
-                    alt={product.alt}
-                    src={product.image}
-                  />
-                  <h3 className="mt-9 font-['Montserrat',Helvetica] font-medium text-black text-base tracking-[2.08px]">
-                    {product.title}
-                  </h3>
-                  <div className="mt-6 w-[237px] h-[43px] bg-[#ffffff17] shadow-[0px_4px_10px_#00000040] flex items-center justify-center space-x-2">
-                    {[...Array(5)].map((_, i) => (
-                      <img
-                        key={i}
-                        className="w-8 h-[26px]"
-                        alt="Star rating"
-                        src="/vector.svg"
-                      />
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
+<section className="flex justify-center mt-14 mb-14 w-full">
+  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4 w-full max-w-[991px]">
+    {products.map((product) => (
+      <Card
+        key={product.id}
+        className="w-full max-w-[297px] h-[393px] bg-[#ffffff17] shadow-[0px_4px_10px_#00000040] mx-auto"
+      >
+        <CardContent className="p-0 flex flex-col items-center">
+          <img
+            className="w-[209px] h-[209px] mt-[29px] object-cover"
+            alt={product.alt}
+            src={product.image}
+          />
+          <h3 className="mt-9 font-['Montserrat',Helvetica] font-medium text-black text-base tracking-[2.08px] text-center">
+            {product.title}
+          </h3>
+          <div className="mt-6 w-[237px] h-[43px] bg-[#ffffff17] shadow-[0px_4px_10px_#00000040] flex items-center justify-center space-x-2">
+            {[...Array(5)].map((_, i) => (
+              <img
+                key={i}
+                className="w-6 h-[24px]"
+                alt="Star rating"
+                src="/vector.svg"
+              />
             ))}
           </div>
-        </section>
+        </CardContent>
+      </Card>
+    ))}
+  </div>
+</section>
+
 
         <section className="bg-white py-16 px-6 md:px-20">
   <div className="text-center mb-12">
@@ -213,80 +215,75 @@ export const SobreNs = (): JSX.Element => {
 
 
         {/* Footer */}
-        <footer className="w-full h-[314px] bg-[#2a2a2a] text-white">
-          <div className="max-w-[1440px] mx-auto px-[179px] pt-[78px] relative">
-            {/* Products Section */}
-            <div className="absolute left-[249px]">
-              <h3 className="font-['Montserrat',Helvetica] font-semibold text-xl mb-4">
-                Produtos
-              </h3>
-              <ul className="space-y-3">
-                {footerSections.products.map((item, index) => (
-                  <li
-                    key={index}
-                    className="font-['Montserrat',Helvetica] font-normal text-xs"
-                  >
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
+ <footer className="w-full bg-[#2a2a2a] text-white px-[20px] sm:px-[40px] lg:px-[179px] pt-[87px]">
+  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+    <div>
+      <h3 className="font-['Montserrat',Helvetica] font-semibold text-xl mb-[33px]">
+        Produtos
+      </h3>
+      <ul className="space-y-[27px]">
+        {["Pulseiras", "Colares", "Brincos"].map((item, index) => (
+          <li key={index} className="font-['Montserrat',Helvetica] font-normal text-xs">
+            <a href={`/${item.toLowerCase()}`} className="hover:text-[#bf8c50] transition-colors">
+              {item}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
 
-            {/* Help Section */}
-            <div className="absolute left-[488px]">
-              <h3 className="font-['Montserrat',Helvetica] font-semibold text-xl mb-4">
-                Ajuda
-              </h3>
-              <ul className="space-y-3">
-                {footerSections.help.map((item, index) => (
-                  <li
-                    key={index}
-                    className="font-['Montserrat',Helvetica] font-normal text-xs"
-                  >
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
+    <div>
+      <h3 className="font-['Montserrat',Helvetica] font-semibold text-xl mb-[33px]">
+        Ajuda
+      </h3>
+      <ul className="space-y-[27px]">
+        {["Formas de pagamento", "Perguntas frequentes", "Reclame aqui"].map((item, index) => (
+          <li key={index} className="font-['Montserrat',Helvetica] font-normal text-xs">
+            <a href={`/${item.replace(/\s+/g, '-').toLowerCase()}`} className="hover:text-[#bf8c50] transition-colors">
+              {item}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
 
-            {/* Social Section */}
-            <div className="absolute left-[682px]">
-  <h3 className="font-['Montserrat',Helvetica] font-semibold text-xl mb-4">
-    Social
-  </h3>
-  <ul className="space-y-3">
-    {footerSections.social.map((item, index) => (
-      <li key={index} className="font-['Montserrat',Helvetica] font-normal text-xs">
-        <a href={item.href} target="_blank" rel="noopener noreferrer" className="hover:underline">
-          {item.name}
-        </a>
-      </li>
-    ))}
-  </ul>
-</div>
+    <div>
+      <h3 className="font-['Montserrat',Helvetica] font-semibold text-xl mb-[33px]">
+        Social
+      </h3>
+      <ul className="space-y-[27px]">
+        {navItems2.map((item, index) => (
+          <li key={index} className="font-['Montserrat',Helvetica] font-normal text-xs">
+            <a href={item.href} target="_blank" rel="noopener noreferrer" className="hover:text-[#bf8c50] transition-colors">
+              {item.name}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
 
+    <div className="text-center">
+      <h3 className="font-['Montserrat',Helvetica] font-semibold text-xl mb-[33px]">
+        Formas de pagamento
+      </h3>
+      <a href="/formas-de-pagamento">
+        <img
+          className="w-56 h-[60px] mx-auto object-cover"
+          alt="Payment methods"
+          src="/image-77.png"
+        />
+      </a>
+    </div>
+  </div>
 
-            {/* Payment Methods */}
-            <div className="absolute left-[867px]">
-              <h3 className="font-['Montserrat',Helvetica] font-semibold text-xl text-center mb-4">
-                Formas de pagamento
-              </h3>
-              <img
-                className="w-56 h-[60px] object-cover"
-                alt="Payment methods"
-                src="/image-77.png"
-              />
-            </div>
+  <div className="my-[30px] bg-[#d9d9d9] h-[1px]"></div>
 
-            <Separator className="absolute w-[1100px] h-px top-[235px] bg-[#d9d9d9]" />
-
-            {/* Copyright */}
-            <div className="absolute w-[744px] top-[275px] left-[345px] font-['Montserrat',Helvetica] font-normal text-[11px] text-center">
-              Rosa de Luz LTDA S/A. – CNPJ 13.800.191/0001-69 - CEP 04773-000.
-              Av. Coronel Octaviano de Freitas Costa, 463 - Socorro, São Paulo
-            </div>
-          </div>
-        </footer>
+  <p className="font-['Montserrat',Helvetica] font-normal text-[11px] text-center">
+    <a href="/" className="hover:text-[#bf8c50] transition-colors">
+      ROSA DE LUZ Comércio LTDA S/A. – CNPJ 13.800.191/0001-69 - CEP 04773-000. Av. Coronel Octaviano de Freitas Costa, 463 - Socorro, São Paulo
+    </a>
+  </p>
+</footer>
       </div>
     </div>
   );

@@ -184,15 +184,10 @@ export const Template = (): JSX.Element => {
               <p className="font-['Montserrat',Helvetica] font-medium text-black text-base tracking-[2.08px]">
                 {product.title}
               </p>
-              <div className="w-full max-w-[237px] h-[43px] mt-2 bg-white shadow-[0px_4px_10px_#00000040] flex items-center justify-start px-3.5 space-x-3.5">
-                {[...Array(5)].map((_, i) => (
-                  <img
-                    key={i}
-                    className="w-8 h-6"
-                    alt="Star rating"
-                    src="/vector.svg"
-                  />
-                ))}
+              <div className="w-full max-w-[237px] h-[43px] mt-2 flex items-center justify-center px-3.5 space-x-3.5">
+             <Button className="mt-12 w-[185px] h-16 bg-[#bf8c50] rounded-[15px] font-['Montserrat',Helvetica] font-medium text-white text-base tracking-[2.08px] mx-auto lg:mx-0">
+      <a href="/produtos">COMPRE JÁ</a>
+    </Button>
               </div>
             </div>
           </CardContent>
@@ -225,13 +220,13 @@ export const Template = (): JSX.Element => {
               alt={product.title}
               src={product.image}
             />
-            <div className="w-full px-7 mt-4">
+            <div className="w-full px-7 mt-4 justify-center text-center">
               <p className="font-['Montserrat',Helvetica] font-medium text-black text-base tracking-[2.08px]">
-                {product.title}
-              </p>
-              <p className="font-['Montserrat',Helvetica] font-medium text-black text-base text-center tracking-[2.08px] mt-5">
                 {product.price}
               </p>
+             <Button className="mt-12 w-[185px] h-16 bg-[#bf8c50] rounded-[15px] font-['Montserrat',Helvetica] font-medium text-white text-base tracking-[2.08px] mx-auto lg:mx-0">
+      <a href="/produtos">COMPRE JÁ</a>
+    </Button>
             </div>
           </CardContent>
         </Card>
