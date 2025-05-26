@@ -118,26 +118,33 @@ export const SobreNs = (): JSX.Element => {
         </header>
 
         {/* Hero Section */}
-   <section className="relative w-full h-[961px] max-[900px]:hidden">
-  <div className="absolute w-full h-[688px] top-0 left-0 bg-[#dfb688]" />
-  <div className="absolute w-full h-[860px] top-0 left-0 bg-[url(/fundo02.png)] bg-cover bg-[50%_50%]">
-    <div className="absolute bottom-8 left-10 flex items-center space-x-12">
-      <div className="w-[163px] h-[54px]">
-        <Button className="w-48 h-[54px] bg-[#d9d9d9] rounded-[5px] hover:bg-[#c4c4c4]">
-          <span className="font-['Montserrat',Helvetica] font-semibold text-black text-sm tracking-[1.82px]">
-            SOBRE NÓS
-          </span>
-        </Button>
-      </div>
+<section className="relative w-full">
+  
+  {/* Imagem de fundo responsiva */}
+  <div className="w-full h-[260px] md:h-[860px] bg-[url('/fundo02.png')] bg-cover bg-center md:bg-[50%_50%]" />
 
-      <Button className="w-48 h-[54px] bg-[#d9d9d9] rounded-[5px] hover:bg-[#c4c4c4]">
-        <span className="font-['Montserrat',Helvetica] font-semibold text-black text-sm tracking-[1.82px]">
-          INSCREVA-SE JÁ
-        </span>
-      </Button>
-    </div>
+  {/* Botões */}
+  <div className="w-full flex flex-col md:flex-row items-center justify-center md:absolute md:bottom-8 md:left-10 space-y-4 md:space-y-0 md:space-x-12 px-4 mt-6 md:mt-0">
+    <Button className="w-48 h-[54px] bg-[#d9d9d9] rounded-[5px] hover:bg-[#c4c4c4]">
+                        <a
+  href="https://wa.me/5599999999999"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="font-medium text-black text-lg tracking-[1.69px] hover:text-[#c30000]"
+>
+  CONTATO
+</a>
+    </Button>
+
+    <Button className="w-48 h-[54px] bg-[#d9d9d9] rounded-[5px] hover:bg-[#c4c4c4]">
+      <span className="font-['Montserrat',Helvetica] font-semibold text-black text-sm tracking-[1.82px]">
+        COMPRE JÁ
+      </span>
+    </Button>
   </div>
 </section>
+
+
 
 
         {/* Products Section */}

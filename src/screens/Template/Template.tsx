@@ -128,7 +128,7 @@ export const Template = (): JSX.Element => {
         </header>
 
         {/* Hero Section */}
- <section className="w-full flex relative h-[600px] sm:h-[500px]">
+<section className="w-full flex relative h-[260px] sm:h-[320px] md:h-[400px] lg:h-[600px]">
   {/* Imagem da esquerda */}
   <div className="w-1/2 h-full">
     <img
@@ -147,17 +147,19 @@ export const Template = (): JSX.Element => {
     />
   </div>
 
-  {/* Texto central */}
-  <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full text-center px-4 md:px-0">
-    <h1 className="font-['Montserrat',Helvetica] font-semibold text-white text-3xl md:text-5xl tracking-wide">
+  {/* Texto centralizado em todas as telas */}
+  <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full text-center px-4">
+    <h1 className="font-['Montserrat',Helvetica] font-semibold text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl tracking-wide">
       R
-      <span className="font-['Dancing_Script',Helvetica] font-normal text-[#f2eb1d] text-5xl md:text-7xl">
+      <span className="font-['Dancing_Script',Helvetica] font-normal text-[#f2eb1d] text-4xl sm:text-5xl md:text-6xl lg:text-7xl">
         o
       </span>
       SA DE LUZ
     </h1>
   </div>
 </section>
+
+
 
 {/* Featured Products Section */}
 <section className="flex justify-center w-full px-5 py-10">
