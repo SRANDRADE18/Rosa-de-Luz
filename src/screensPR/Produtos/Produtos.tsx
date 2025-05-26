@@ -123,7 +123,7 @@ const navigate = useNavigate();
 
 /////////////////////////////
 
-const whatsappNumber = "5511980317304"; // Número da loja
+const whatsappNumber = "551197895764"; // Número da loja
 
 const generateProtocol = (productId: string): string => {
   return (
