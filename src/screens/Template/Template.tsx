@@ -1,4 +1,4 @@
-import { SearchIcon, ShoppingBagIcon, MenuIcon, XIcon } from "lucide-react";
+import { SearchIcon, ShoppingBagIcon, MenuIcon, XIcon, ShoppingCart } from "lucide-react";
 import { Button } from "../../components/ui/button";
 import { Card, CardContent } from "../../components/ui/card";
 import { Separator } from "../../components/ui/separator";
@@ -89,7 +89,7 @@ export const Template = (): JSX.Element => {
                 <a href="/produtos" className="font-medium text-black text-[13px] tracking-[1.69px] hover:text-[#c30000]">Compra</a>
                 <a href="/sobre" className="font-medium text-black text-[13px] tracking-[1.69px] hover:text-[#c30000]">Sobre</a>
                         <a
-  href="https://wa.me/5599999999999"
+  href="https://wa.me/5511978951764"
   target="_blank"
   rel="noopener noreferrer"
   className="font-medium text-black text-lg tracking-[1.69px] hover:text-[#c30000]"
@@ -100,8 +100,9 @@ export const Template = (): JSX.Element => {
 
             {/* Icons */}
             <div className="flex items-center space-x-4">
-                <SearchIcon className="w-5 h-5 cursor-pointer" />
-                <ShoppingBagIcon className="w-5 h-5 cursor-pointer" />
+              <a href="/produtos"> <ShoppingCart className="w-5 h-5 cursor-pointer" /> </a>           
+                <a href="/produtos"> <ShoppingBagIcon className="w-5 h-5 cursor-pointer" /> </a>
+                
             </div>
 
             {/* Mobile Menu Button */}
@@ -212,10 +213,12 @@ export const Template = (): JSX.Element => {
       ];
 
       return (
+       
         <Card
           key={product.id}
-          className={`w-full max-w-[297px] h-[393px] bg-[#bf8c5033] shadow-[0px_4px_10px_#00000040] mx-auto ${visibilityClasses[index]}`}
+          className={`w-full max-w-[297px]   h-[400px] bg-[#bf8c5033]  shadow-[0px_4px_10px_#00000040] mx-auto ${visibilityClasses[index]}`}
         >
+    
           <CardContent className="p-0 flex flex-col items-center">
             <img
               className="w-[241px] h-[209px] mt-7 object-cover max-w-full"
@@ -231,6 +234,7 @@ export const Template = (): JSX.Element => {
     </Button>
             </div>
           </CardContent>
+          
         </Card>
       );
     })}

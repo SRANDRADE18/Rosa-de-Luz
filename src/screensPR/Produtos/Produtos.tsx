@@ -143,12 +143,11 @@ Olá! Gostaria de finalizar meu pedido com os seguintes detalhes:
 
 🛍️ *Produto*: ${productData.description}
 💰 *Preço*: R$ ${Number(productData.price).toFixed(2)}
-📝 *Descrição*: ${productData.shortDescription}
+📝 *Descrição*: ${productData.description}
 📦 *Protocolo*: ${protocol}
   `;
 
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message.trim())}`;
-
   window.open(whatsappLink, "_blank");
 };
 
@@ -183,7 +182,7 @@ Olá! Gostaria de finalizar meu pedido com os seguintes detalhes:
                 <a href="/produtos" className="font-medium text-black text-[13px] tracking-[1.69px] hover:text-[#c30000]">Compra</a>
                 <a href="/sobre" className="font-medium text-black text-[13px] tracking-[1.69px] hover:text-[#c30000]">Sobre</a>
                          <a
-  href="https://wa.me/5599999999999"
+  href="https://wa.me/5511978951764"
   target="_blank"
   rel="noopener noreferrer"
   className="font-medium text-black text-lg tracking-[1.69px] hover:text-[#c30000]"
