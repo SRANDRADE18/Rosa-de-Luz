@@ -26,7 +26,7 @@ const productData = [
   },
   {
     id: 4,
-    image: "/image-10.png",
+    image: "/look3.jpeg",
     title:
       "Modelo de pulseira bem especial, porque representa muito do que eu creio",
     price: "R$35,00",
@@ -39,7 +39,7 @@ const productData = [
   },
   {
     id: 6,
-    image: "/look3.jpeg",
+    image: "/image-9.png",
     title: "Pulseiras Personalizadas",
     price: "R$35,50",
   },

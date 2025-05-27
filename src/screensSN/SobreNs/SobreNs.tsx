@@ -225,8 +225,8 @@ export const SobreNs = (): JSX.Element => {
  <footer className="w-full bg-[#2a2a2a] text-white px-[20px] sm:px-[40px] lg:px-[179px] pt-[87px]">
   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
     <div>
-      <h3 className="font-['Montserrat',Helvetica] font-semibold text-xl mb-[33px]">
-        Produtos
+      <h3  className="font-['Montserrat',Helvetica] font-semibold text-xl mb-[33px]">
+        <a href="/produtos">Produtos</a> 
       </h3>
       <ul className="space-y-[27px]">
         {["Pulseiras", "Colares", "Brincos"].map((item, index) => (

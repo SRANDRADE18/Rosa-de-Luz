@@ -16,7 +16,7 @@ const [selectedModels, setSelectedModels] = useState<string[]>([]);
   const [modalProduct, setModalProduct] = useState(null);
   
   const priceRanges = [
-    { id: "price-1", label: "Até R$ 25,00", min: 0, max: 25 },
+    { id: "price-1", label: "Até R$ 35,00", min: 0, max: 35 },
     { id: "price-2", label: "De R$ 50,00 A R$ 75,00", min: 50, max: 75 },
     { id: "price-3", label: "De R$ 75,00 A R$ 100,00", min: 75, max: 100 },
     { id: "price-4", label: "De R$ 100,00 A R$ 150,00", min: 100, max: 150 },
@@ -123,7 +123,7 @@ const navigate = useNavigate();
 
 /////////////////////////////
 
-const whatsappNumber = "551197895764"; // Número da loja
+const whatsappNumber = "5511978951764"; // Número da loja
 
 const generateProtocol = (productId: string): string => {
   return (
@@ -185,7 +185,7 @@ Olá! Gostaria de finalizar meu pedido com os seguintes detalhes:
   href="https://wa.me/5511978951764"
   target="_blank"
   rel="noopener noreferrer"
-  className="font-medium text-black text-lg tracking-[1.69px] hover:text-[#c30000]"
+  className="font-medium text-black text-[13px] tracking-[1.69px] hover:text-[#c30000]"
 >
   Contato
 </a>
@@ -334,9 +334,9 @@ Olá! Gostaria de finalizar meu pedido com os seguintes detalhes:
 <footer className="w-full bg-[#2a2a2a] text-white px-[20px] sm:px-[40px] lg:px-[179px] pt-[87px]">
   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
     <div>
-      <h3 className="font-['Montserrat',Helvetica] font-semibold text-xl mb-[33px]">
+      <a href="/compra" className="font-['Montserrat',Helvetica] font-semibold text-xl mb-[33px]">
         Produtos
-      </h3>
+      </a>
       <ul className="space-y-[27px]">
         {["Pulseiras", "Colares", "Brincos"].map((item, index) => (
           <li key={index} className="font-['Montserrat',Helvetica] font-normal text-xs">
