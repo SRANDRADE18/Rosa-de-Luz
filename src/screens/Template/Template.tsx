@@ -39,7 +39,7 @@ const productData = [
   },
   {
     id: 6,
-    image: "/image-9.png",
+    image: "/look3.jpeg",
     title: "Pulseiras Personalizadas",
     price: "R$35,50",
   },
